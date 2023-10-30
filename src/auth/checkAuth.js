@@ -33,6 +33,13 @@ const apiKey = async (req, res, next) => {
     }
 }
 
+const asyncHandler = fn => {
+    return( req, res, next) => {
+        fn(req, res, next).catch(next)
+    }
+}
+
 module.exports = {
-    apiKey
+    apiKey,
+    asyncHandler
 }
